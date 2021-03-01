@@ -62,8 +62,9 @@ let id = '';
              const confirmar = confirm("¿Seguro que quieres borrar tu post?");
              if (confirmar == true){
                await deletePost(e.target.dataset.id);
-             }
-               
+             } 
+               onGetPost(); 
+               btnsDelete();
            }); 
 
         `;
