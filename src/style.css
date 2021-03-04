@@ -59,7 +59,7 @@ h1{
   color: #EE40A9;
 }
 
-form #title{
+#post-title{
   width: 80%;
   height: 48px;
   border-radius: 20px;
@@ -70,7 +70,7 @@ form #title{
 
 }
 
-form #location{
+#post-location{
   width: 80%;
   height: 48px;
   background: rgba(255, 255, 255, 0.6);
@@ -80,7 +80,7 @@ form #location{
   margin-bottom: 10px;
 }
 
-form #description{
+#post-description{
   width: 80%;
   min-width: 80%;
   height: auto;
