@@ -1,21 +1,24 @@
 import { home } from './home.js';
-import { posting } from './posting.js';
-import { post } from './post.js';
-import { singlepost } from './single-post.js';
+// import { posting } from './posting.js';
+// import { post } from './post.js';
+// import { singlepost } from './single-post.js';
 
 export const routes = {
   '/': home,
-  '/posting': posting,
-  '/post': post,
-  '/singlepost': singlepost,
+  //'/posting': posting,
+  //'/post': post,
+  //'/singlepost': singlepost,
 };
 
-const rootDiv = document.getElementById('root');
-const homeViewFunction = routes[window.location.pathname];
-homeViewFunction(rootDiv);
+let firebase = null
+
+export const load = (firebaseFromMain) => {
+  firebase = firebaseFromMain
+}
 
 export const onNavigate = (path) => {
   const [pathname] = path.split('?')
+  console.log('pathname', pathname)
   
   window.history.pushState(
     {},
@@ -24,10 +27,10 @@ export const onNavigate = (path) => {
   );
 
   const viewFunction = routes[pathname];
-  viewFunction(rootDiv);
+  viewFunction(rootDiv, firebase);
 };
 
 window.onpopstate = () => {
   const viewFunction  = routes[window.location.pathname];
-  viewFunction(rootDiv);
+  viewFunction(rootDiv, firebase);
 };

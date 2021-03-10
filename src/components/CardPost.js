@@ -1,5 +1,4 @@
-const CardPost = (post) => {
-  return `
+const CardPost = (post) => `
     <div id="mainPost">
             <h2 class="title">${post.title}</h2>
             <p class="plocation">${post.location}</p>
@@ -9,7 +8,6 @@ const CardPost = (post) => {
               <span><i class="fas fa-heart"></i></span>
               <a href="/posting?id=${post.id}" class="btn-edit"><i class="fas fa-pencil-alt"></i></a>
             </div>  
-        </div>
-    `;
-};
-export default CardPost
+    </div>`;
+
+export default CardPost;
