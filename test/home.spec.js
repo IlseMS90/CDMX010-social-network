@@ -1,7 +1,5 @@
 // importamos funciones que nos ayudaran a simular las interacciones del usario con la UI
 import { home } from '../src/home.js';
-
-
 // importamos funciones que nos ayudaran a simular las interacciones del usario con la UI
 import { screen, waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
@@ -24,6 +22,33 @@ describe('home', () => {
 
     expect(target.innerHTML).toMatchSnapshot();
   });
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   it.skip('should login the user when the user submits the login form', () => {
     const target = document.getElementById('root');

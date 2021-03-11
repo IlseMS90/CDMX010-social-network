@@ -1,7 +1,7 @@
 import { home } from './home.js';
-// import { posting } from './posting.js';
-// import { post } from './post.js';
-// import { singlepost } from './single-post.js';
+//import { posting } from './posting.js';
+//import { post } from './post.js';
+//import { singlepost } from './single-post.js';
 
 export const routes = {
   '/': home,
