@@ -1,5 +1,5 @@
 // llamar a Firestore
-export const dataBase = firebase.firestore();
+const dataBase = firebase.firestore();
 
 export const savePost = ({ title, location, description, likes }) =>
   dataBase.collection('post').doc().set({

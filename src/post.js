@@ -1,14 +1,13 @@
-import CardPost from './components/CardPost.js';
-import { deletePost, getAllPosts } from './lib/firebase.js';
 import { onNavigate } from './routes.js';
+import CardPost from './components/CardPost.js';
 
-export const post = async (target) => {
+export const post = async (target, firebase) => {
   const templeteHome = `
     <div id="post-container"></div>
   `;
   target.innerHTML = templeteHome;
   
-  const posts = await getAllPosts()
+  const posts = await firebase.getAllPosts();
   
   // render posts
   const postTemplates = posts.map(post => CardPost(post));
@@ -19,7 +18,9 @@ export const post = async (target) => {
   const btnsEdit = document.querySelectorAll('.btn-edit');
   btnsEdit.forEach(btn => {
     btn.addEventListener('click', async (e) => {
+      onNavigate('/post');
       e.preventDefault();
+      
       
       const url = new URL(e.currentTarget.href)
       onNavigate(url.pathname + url.search);   
@@ -32,7 +33,7 @@ export const post = async (target) => {
     btn.addEventListener('click', (e) => {
       const confirmar = confirm('¿Seguro que quieres borrar tu post?');
       if (confirmar) {
-        deletePost(e.target.dataset.id);
+        firebase.deletePost(e.target.dataset.id);
       }
     });
   });

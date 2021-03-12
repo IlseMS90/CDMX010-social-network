@@ -1,8 +1,9 @@
-import { savePost, updatePost, getPostById } from './lib/firebase.js';
+import { onNavigate } from './routes.js';
+
 
 const getSearchParam = (param) => (new URLSearchParams(window.location.search)).get(param);
 
-export const posting = async (target) => {
+export const posting = async (target, firebase) => {
   const html = `
   <div id="post-form">
     <form id="form">
@@ -16,13 +17,13 @@ export const posting = async (target) => {
   `;
   target.innerHTML = html;
 
-  const postId = getSearchParam('id')
+  const postId = getSearchParam('id');
   const postForm = document.getElementById('form');
   postForm.title.focus();
-  let post = null
+  let post = null;
 
   if (postId) {
-    post = await getPostById(postId);
+    post = await firebase.getPostById(postId);
     postForm.title.value = post.title;
     postForm.location.value = post.location;
     postForm.description.value = post.description;
@@ -31,6 +32,7 @@ export const posting = async (target) => {
 
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    onNavigate('/posting');
     const postData = {
       title: postForm.title.value,
       location: postForm.location.value,
@@ -39,10 +41,10 @@ export const posting = async (target) => {
     };
 
     if (post) {
-      await updatePost(postId, postData);
+      await firebase.updatePost(postId, postData);
       postForm.save.innerText = 'Guardar';
     } else {
-      await savePost(postData);
+      await firebase.savePost(postData);
       // limpia o resetea el formulario
       postForm.reset();
     }

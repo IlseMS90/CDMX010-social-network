@@ -1,7 +1,12 @@
-// En este documento solamente tenemos lo que manipula el DOM
-import { onNavigate } from './routes.js';
-// Importamos navigate para manipular el DOM con los botones del footer
-import { getPostById } from './lib/firebase.js';
+import { onNavigate, load, routes } from './routes.js';
+import * as firebase from './lib/firebase.js';
+
+load(firebase);
+
+const rootDiv = document.getElementById('root');
+const homeViewFunction = routes[window.location.pathname];
+homeViewFunction(rootDiv, firebase);
+
 
 const postForm = document.getElementById('form');
 

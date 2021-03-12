@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home should render 1`] = `
+"
+    <div id=\\"back-list\\"><div id=\\"post-list\\">
+    <a href=\\"#\\" class=\\"single-post\\" data-id=\\"173763276327323\\">
+      <h2 class=\\"title-list\\">test</h2>
+    </a>
+  </div>
+</div>"
+`;
