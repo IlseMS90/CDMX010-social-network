@@ -1,16 +1,12 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-undef */
 // target es un parametro arbitrario que siempre recibe root/rootDIv
-//archivo para el testing 
-// import { getAllPosts } from './lib/firebase.js';
-import { onNavigate } from './routes.js';
+import { getAllPosts } from './lib/firebase.js';
 
-export const home = async (target, firebase) => {
+export const home = async (target) => {
   const templeteHome = `
     <div id="back-list"><div id="post-list"></div>
 `;
   target.innerHTML = templeteHome;
-  const posts = await firebase.getAllPosts();
+  const posts = await getAllPosts();
   const postTemplates = posts.map((post) => `
     <a href="#" class="single-post" data-id="${post.id}">
       <h2 class="title-list">${post.title}</h2>

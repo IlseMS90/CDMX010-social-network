@@ -2,13 +2,13 @@ import CardPost from './components/CardPost.js';
 import { deletePost, getAllPosts } from './lib/firebase.js';
 import { onNavigate } from './routes.js';
 
-export const post = async (target, firebase) => {
+export const post = async (target) => {
   const templeteHome = `
     <div id="post-container"></div>
   `;
   target.innerHTML = templeteHome;
   
-  const posts = await firebase.getAllPosts()
+  const posts = await getAllPosts()
   
   // render posts
   const postTemplates = posts.map(post => CardPost(post));
